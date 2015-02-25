@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#this script collects photos for stitching
+
+# make directory called stitched-yyyymmdd-hhmmss
+
+# move all .jpg files to new directory
+
+# use ffmpeg to stitch mp4 from jpgs (consider switching to avconv?)
+
 
 
 
