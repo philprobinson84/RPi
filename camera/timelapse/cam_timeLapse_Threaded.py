@@ -3,9 +3,9 @@ import time
 from subprocess import call
 from threading import Thread
 
-cam_cmd = "python /home/pi/RPi/cam_timeLapse_Threaded_cam.py"
-stitch_cmd = "python /home/pi/RPi/cam_timeLapse_Threaded_stitch.py"
-upload_cmd = "python /home/pi/RPi/cam_timeLapse_Threaded_upload.py"
+cam_cmd = "python /home/pi/RPi/camera/timelapse/cam_timeLapse_Threaded_cam.py"
+stitch_cmd = "python /home/pi/RPi/camera/timelapse/cam_timeLapse_Threaded_stitch.py"
+upload_cmd = "python /home/pi/RPi/camera/timelapse/cam_timeLapse_Threaded_upload.py"
 
 def cam_thread():
     print "cam_thread() - Starting Thread"
