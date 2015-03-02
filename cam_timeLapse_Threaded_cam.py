@@ -33,7 +33,7 @@ def capture_frame(frame):
         print "camThread:capture_frame() captured frame %06d: %s" % (frame, filename)
 
 frame = 0;
-while TRUE:
+while True:
     # record start_time
     start_time = time.time()
 
