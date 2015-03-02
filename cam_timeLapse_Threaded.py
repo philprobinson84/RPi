@@ -34,7 +34,7 @@ def upload_thread():
 # main
 t_cam = Thread(target=cam_thread, args=())
 t_cam.start()
-#t_stitch = Thread(target=stitch_thread, args=())
-#t_stitch.start()
+t_stitch = Thread(target=stitch_thread, args=())
+t_stitch.start()
 #t_upload = Thread(target=upload_thread, args=())
 #t_upload.start()
