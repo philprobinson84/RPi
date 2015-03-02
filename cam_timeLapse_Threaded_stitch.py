@@ -1,4 +1,5 @@
 #!/usr/bin/env python2.7
+import time
 from subprocess import call
 
 STITCH_INTERVAL = 3600

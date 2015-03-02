@@ -5,6 +5,7 @@ import os
 
 FRAME_INTERVAL = 30
 DIRNAME = "/home/pi/timelapse"
+frame = 1
 
 def create_dir():
     TIME = time.localtime()
@@ -19,6 +20,9 @@ def create_dir():
     if not os.path.isdir(DIRNAME):
         os.makedirs(DIRNAME)
         print "camThread:create_dir() created folder: %s" % DIRNAME
+        global frame
+        frame = 1
+        print "camThread:create_dir() frame # reset to: %d" % frame
 
 def capture_frame(frame):
     with picamera.PiCamera() as cam:
@@ -32,16 +36,16 @@ def capture_frame(frame):
         cam.capture(filename, format='jpeg',quality=75)
         print "camThread:capture_frame() captured frame %06d: %s" % (frame, filename)
 
-frame = 0;
+
 while True:
     # record start_time
     start_time = time.time()
 
-    # increment frame#
-    frame += 1
-
     # capture a frame
     capture_frame(frame)
+
+    # increment frame#
+    frame += 1
 
     # record end time
     end_time = time.time()
