@@ -1,19 +1,21 @@
 #!/usr/bin/env python2.7
-# script by Alex Eames http://RasPi.tv/?p=7684
 import time
 from subprocess import call
 from threading import Thread
 
-cmd = "python /home/pi/RPi/threadAction.py"
+cam_cmd = "python /home/pi/RPi/cam_timeLapse_Threaded_cam.py"
+stitch_cmd = "python /home/pi/RPi/cam_timeLapse_Threaded_stitch.py"
+upload_cmd = "python /home/pi/RPi/cam_timeLapse_Threaded_upload.py"
 
-def process_thread(i):
-    print "Thread: %d" % i
+def cam_thread(i):
+    print "cam_thread() - Starting Thread - Camera"
     start_time = time.time()
-    call ([cmd], shell=True)
+    call ([cam_cmd], shell=True)
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print "Thread %s took %.2f seconds" % (i, elapsed_time)
+    print "cam_thread() - Ended Thread - Camera (ran for: %.2f seconds)" % elapsed_time
 
+# main
 how_many = int(raw_input("How many threads?\n>"))
 
 for i in range(how_many):
