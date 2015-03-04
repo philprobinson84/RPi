@@ -1,8 +1,19 @@
 #!/usr/bin/env python2.7
 import time
+import os
+import errno
 from subprocess import call
 
 STITCH_INTERVAL = 3600
+
+def force_symlink(file1, file2):
+    try:
+        os.symlink(file1, file2)
+    except OSError, e:
+        if e.errno == errno.EEXIST:
+            os.remove(file2)
+            os.symlink(file1, file2)
+            
 
 def stitch_process(path):
     # run ffmpeg
@@ -12,6 +23,7 @@ def stitch_process(path):
     # FFMPEG CMD Line: ffmpeg -y -f image2 -i /home/phil/timelapse/frame%03d.jpg -start_number 0 -r 24 -vcodec libx264 -profile high /home/phil/timelapse.mp4
     call(['ffmpeg', '-y', '-f', 'image2', '-i', inpath, '-r', '24', '-vcodec', 'libx264', '-profile', 'high', outpath])
     print "stitchThread:stitch_process() finished stitch in: %s" % path
+    force_symlink(outpath, "/home/pi/timelapse/latest/latest.mp4")
 
 # first off, we need to wait until the hour before we can start our loop
 while True:

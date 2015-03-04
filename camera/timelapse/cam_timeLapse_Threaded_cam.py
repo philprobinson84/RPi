@@ -2,6 +2,7 @@
 import time
 import picamera
 import os
+import errno
 
 FRAME_INTERVAL = 30
 DIRNAME = "/home/pi/timelapse"
@@ -24,6 +25,15 @@ def create_dir():
         frame = 1
         print "camThread:create_dir() frame # reset to: %d" % frame
 
+def force_symlink(file1, file2):
+    try:
+        os.symlink(file1, file2)
+    except OSError, e:
+        if e.errno == errno.EEXIST:
+            os.remove(file2)
+            os.symlink(file1, file2)
+
+
 def capture_frame(frame):
     with picamera.PiCamera() as cam:
         time.sleep(1)
@@ -35,6 +45,7 @@ def capture_frame(frame):
         filename = '%sframe%06d.jpg' % (DIRNAME, frame)
         cam.capture(filename, format='jpeg',quality=75)
         print "camThread:capture_frame() captured frame %06d: %s" % (frame, filename)
+        force_symlink(filename, "/home/pi/timelapse/latest/latest.jpg")
 
 
 while True:
