@@ -3,6 +3,19 @@ import time
 import os
 import errno
 from subprocess import call
+import sys
+
+class Logger(object):
+    def __init__(self):
+        self.terminal = sys.stdout
+        self.log = open("logfile.log", "a")
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)  
+
+sys.stdout = Logger()
+
 
 STITCH_INTERVAL = 3600
 
