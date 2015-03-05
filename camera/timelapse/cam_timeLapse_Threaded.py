@@ -3,6 +3,20 @@ import time
 from subprocess import call
 from threading import Thread
 
+import sys
+
+class Logger(object):
+    def __init__(self):
+        self.terminal = sys.stdout
+        self.log = open("logfile.log", "a")
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)  
+
+sys.stdout = Logger()
+
+
 cam_cmd = "python /home/pi/RPi/camera/timelapse/cam_timeLapse_Threaded_cam.py"
 stitch_cmd = "python /home/pi/RPi/camera/timelapse/cam_timeLapse_Threaded_stitch.py"
 upload_cmd = "python /home/pi/RPi/camera/timelapse/cam_timeLapse_Threaded_upload.py"
