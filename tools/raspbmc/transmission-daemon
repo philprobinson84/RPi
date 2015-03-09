@@ -10,7 +10,7 @@
 
 NAME=transmission-daemon
 DAEMON=/usr/bin/$NAME
-USER=debian-transmission
+USER=root
 STOP_TIMEOUT=30
 
 export PATH="${PATH:+$PATH:}/sbin"
@@ -25,7 +25,7 @@ start_daemon () {
     if [ $ENABLE_DAEMON != 1 ]; then
         log_progress_msg "(disabled)"
 		log_end_msg 255 || true
-    else    
+    else
         start-stop-daemon --start \
         --chuid $USER \
 		$START_STOP_OPTIONS \
@@ -70,4 +70,3 @@ case "$1" in
 esac
 
 exit 0
-
