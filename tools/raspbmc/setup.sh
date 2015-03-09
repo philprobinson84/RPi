@@ -17,3 +17,12 @@ sudo cp /home/pi/RPi/tools/raspbmc/transmission-daemon /etc/init.d/transmission-
 
 # restart the service
 sudo service transmission-daemon start
+
+# stop the firewall
+
+sudo service iptables stop
+# copy over iptables config allowing remote access
+sudo cp /home/pi/RPi/tools/raspbmc/secure-rmc /etc/network/if-up.d/secure-rmc
+
+# restart the firewall
+sudo service iptables start

@@ -45,7 +45,7 @@ ip_to_bin() {
   local ip=$1
   local first=`echo $ip | cut -d. -f1 | awk '{print $1}'`
   local second=`echo $ip | cut -d. -f2 | awk '{print $1}'`
-  local third=`echo $ip | cut -d. -f3 | awk '{print $1}'` 
+  local third=`echo $ip | cut -d. -f3 | awk '{print $1}'`
   local fourth=`echo $ip | cut -d. -f4 | awk '{print $1}'`
 
   first=`ip_octet_to_bin $first`
@@ -61,12 +61,12 @@ bin_to_ip() {
   local second=${1:8:8}
   local third=${1:16:8}
   local fourth=${1:24:8}
- 
+
   first=`bin_to_dec $first`
   second=`bin_to_dec $second`
   third=`bin_to_dec $third`
   fourth=`bin_to_dec $fourth`
-  
+
   echo $first.$second.$third.$fourth
 }
 
@@ -120,7 +120,7 @@ get_subnet() {
   done
 
   subnet=`bin_to_ip $subnet`
- 
+
   subnet=$subnet/$counter
 
   echo $subnet
@@ -133,7 +133,5 @@ if [ "$IFACE" != "lo" ]; then
 	logger -t secure-rmc "netmask not found"
 	exit 1
    fi
-    iptables -A INPUT -s $NETMASK -i $IFACE -j ACCEPT
-    iptables -A INPUT -i $IFACE -j DROP
+    iptables -A INPUT -i $IFACE -j ACCEPT
 fi
-
