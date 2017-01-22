@@ -1,0 +1,26 @@
+{
+    "bridge": {
+        "name": "RasPi",
+        "username": "CC:22:3D:E3:CE:33",
+        "port": 51826,
+        "pin": "012-34-567"
+    },
+
+    "description": "RaspberyyPi2 HomeBridge",
+    
+    "platforms": [
+      {
+        "platform": "Camera-ffmpeg",
+        "cameras": [{
+          "name": "PiCam",
+        	"videoConfig": {
+        		"source": "-re -i http://192.168.0.6:8080/stream/video.mjpeg",
+        		"maxStreams": 2,
+        		"maxWidth": 640,
+        		"maxHeight": 360,
+        		"maxFPS": 30
+        	}
+        }]
+      }
+    ]
+}
