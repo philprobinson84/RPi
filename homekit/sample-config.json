@@ -10,14 +10,6 @@
 
     "accessories": [
         {
-            "accessory": "Computer",
-            "name": "phil-desktop",
-            "mac": "08:62:66:27:ab:45",
-            "ip": "192.168.0.11",
-            "pingInterval": 45,
-            "wakeGraceTime": 90
-        },
-        {
             "accessory": "HTTP-RGB",
             "name": "Blinkt 1",
 

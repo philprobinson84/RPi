@@ -15,8 +15,6 @@ Finally in another teminal just type:
 homebridge
 ```
 
-(now using npm install -g homebridge-wol too...)
-
 #Full Instructions
 
 Based on the Using Mote with Homekit and Siri tutorial (https://learn.pimoroni.com/tutorial/sandyj/using-mote-with-homekit-and-siri) and modified to support Blinkt by Phil Robinson (https://github.com/philprobinson84/blinkt).
