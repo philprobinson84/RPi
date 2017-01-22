@@ -10,7 +10,7 @@
 
     "platforms": [
       {
-        "platform": "Camera-IP",
+        "platform": "Camera-ffmpeg",
         "cameras": [{
           "name": "PiCam",
         	"videoConfig": {
