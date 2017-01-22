@@ -202,8 +202,8 @@
         		"videoConfig": {
         			"source": "-re -i http://192.168.0.6:8080/stream/video.mjpeg",
         			"maxStreams": 2,
-        			"maxWidth": 480,
-        			"maxHeight": 320,
+        			"maxWidth": 640,
+        			"maxHeight": 360,
         			"maxFPS": 30
         		}
         	}]
