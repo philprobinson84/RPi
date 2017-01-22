@@ -9,10 +9,6 @@ To run everything, first we start the Python blinkt-homekit script:
 ```bash
 sudo python homekit.py
 ```
-In a second terminal, start streaming the camera to ffmpeg:
-```bash
-raspivid -n -w 480 -h 320 -b 300000 -fps 15 -t 0 -o - | ffmpeg -i - -r 15 -f mpegts udp://127.0.0.1:8090
-```
 Finally in another teminal just type:
 ```bash
 homebridge

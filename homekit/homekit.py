@@ -87,6 +87,45 @@ def set_brightness(p,x):
         blinkt_on(p,status[p][0])
     return str(x)
 
+@app.route('/blinkt/api/v1.0/<int:p>/all/<string:st>', methods=['GET'])
+def set_status(p,st):
+    global status
+    if st == 'on':
+        for i in range(NUM_PIXELS):
+            blinkt_on(i,status[i][0])
+    elif st == 'off':
+        for i in range(NUM_PIXELS):
+            blinkt_off(i)
+    elif st == 'status':
+        global status
+        # can't easily say whether all are off or on, so we'll take an average...
+        totalOn = 0
+        for i in range(NUM_PIXELS):
+            totalOn += status[i][1]
+        if totalOn<=3:
+            ret = 0
+        else:
+            ret = 1
+    return str(ret)
+
+@app.route('/blinkt/api/v1.0/<int:p>/all/brightness', methods=['GET'])
+def get_brightness(p):
+    global status
+    # can't easily get global brightness, so we'll take an average...
+    totalBrightness = 0
+    for i in range(NUM_PIXELS):
+        totalBrightness += status[i][2]
+    return str(round(totalBrightness/NUM_PIXELS,0))
+
+@app.route('/blinkt/api/v1.0/<int:p>/all/brightness/<string:x>', methods=['GET'])
+def set_brightness(p,x):
+    global status
+    for i in range(NUM_PIXELS):
+        status[i][2] = int(x)
+        if status[i][1] != 0:
+            blinkt_on(i,status[i][0])
+    return str(x)
+
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)

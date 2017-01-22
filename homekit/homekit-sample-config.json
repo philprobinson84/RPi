@@ -176,6 +176,21 @@
                 "url": "http://127.0.0.1:5000/blinkt/api/v1.0/7/set/%s",
                 "brightness": true
             }
+        },
+        {
+            "accessory": "HTTP-RGB",
+            "name": "AllBlinkt",
+
+            "switch": {
+                "status": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/status",
+                "powerOn": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/on",
+                "powerOff": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/off"
+            },
+
+            "brightness": {
+                "status": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/brightness",
+                "url": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/brightness/%s"
+            }
         }
     ],
 
@@ -185,13 +200,13 @@
         	"cameras": [{
         		"name": "pi camera",
         		"videoConfig": {
-        			"source": "-re -i udp://127.0.0.1:8090",
+        			"source": "-re -i http://192.168.0.6:8080/stream/video.mjpeg",
         			"maxStreams": 2,
         			"maxWidth": 480,
         			"maxHeight": 320,
-        			"maxFPS": 15
+        			"maxFPS": 30
         		}
         	}]
-        }
+      }
     ]
 }
