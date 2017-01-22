@@ -10,6 +10,14 @@
 
     "accessories": [
         {
+            "accessory": "Computer",
+            "name": "phil-desktop",
+            "mac": "08:62:66:27:ab:45",
+            "ip": "192.168.0.11",
+            "pingInterval": 45,
+            "wakeGraceTime": 90
+        },
+        {
             "accessory": "HTTP-RGB",
             "name": "Blinkt 1",
 
@@ -190,6 +198,11 @@
             "brightness": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/brightness",
                 "url": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/brightness/%s"
+            },
+            "color": {
+                "status": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/set",
+                "url": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/set/%s",
+                "brightness": true
             }
         }
     ],
@@ -200,10 +213,11 @@
         "cameras": [{
           "name": "PiCam",
         	"videoConfig": {
-            "source": "-re -i http://127.0.0.1:8080/stream/video.mjpeg",
-          	"maxStreams": 2,
-          	"maxWidth": 320,
-          	"maxHeight": 240,
+            "source": "-re -i http://127.0.0.1:8080/stream/video.h264",
+            "stillImageSource": "-i http://127.0.0.1:8080/stream/snapshot.jpeg",
+          	"maxStreams": 4,
+          	"maxWidth": 1280,
+          	"maxHeight": 720,
           	"maxFPS": 15
         	}
         }]

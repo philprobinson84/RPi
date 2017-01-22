@@ -16,6 +16,8 @@ status = []
 for i in range(NUM_PIXELS):
     status.append(['FFFFFF', 0, 50])
 
+colourAll = 'FFFFFF'
+
 def hex_to_rgb(value):
     value = value.lstrip('#')
     length = len(value)
@@ -109,6 +111,19 @@ def set_status_all(p,st):
         else:
             ret = 1
     return str(ret)
+
+@app.route('/blinkt/api/v1.0/<int:p>/all/set', methods=['GET'])
+def get_colour_all(p):
+    global colourAll
+    return str(colourAll)
+
+@app.route('/blinkt/api/v1.0/<int:p>/all/set/<string:c>', methods=['GET'])
+def set_colour_all(p,c):
+    global colourAll
+    colourAll = c
+    for i in range(NUM_PIXELS):
+        blinkt_on(i,colourAll)
+    return str(c)
 
 @app.route('/blinkt/api/v1.0/<int:p>/all/brightness', methods=['GET'])
 def get_brightness_all(p):

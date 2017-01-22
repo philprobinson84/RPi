@@ -1,4 +1,5 @@
 #Quick Instructions
+
 Setup blinkt, see below...
 
 Now we'll copy the example JSON file over, change directory to wherever the blinkt examples reside, then:
@@ -13,6 +14,9 @@ Finally in another teminal just type:
 ```bash
 homebridge
 ```
+
+(now using npm install -g homebridge-wol too...)
+
 #Full Instructions
 
 Based on the Using Mote with Homekit and Siri tutorial (https://learn.pimoroni.com/tutorial/sandyj/using-mote-with-homekit-and-siri) and modified to support Blinkt by Phil Robinson (https://github.com/philprobinson84/blinkt).
