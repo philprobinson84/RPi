@@ -88,16 +88,18 @@ def set_brightness(p,x):
     return str(x)
 
 @app.route('/blinkt/api/v1.0/<int:p>/all/<string:st>', methods=['GET'])
-def set_status(p,st):
+def set_status_all(p,st):
     global status
+    ret = 0
     if st == 'on':
         for i in range(NUM_PIXELS):
             blinkt_on(i,status[i][0])
+        ret = 1
     elif st == 'off':
         for i in range(NUM_PIXELS):
             blinkt_off(i)
+        ret = 0
     elif st == 'status':
-        global status
         # can't easily say whether all are off or on, so we'll take an average...
         totalOn = 0
         for i in range(NUM_PIXELS):
@@ -109,7 +111,7 @@ def set_status(p,st):
     return str(ret)
 
 @app.route('/blinkt/api/v1.0/<int:p>/all/brightness', methods=['GET'])
-def get_brightness(p):
+def get_brightness_all(p):
     global status
     # can't easily get global brightness, so we'll take an average...
     totalBrightness = 0
@@ -118,7 +120,7 @@ def get_brightness(p):
     return str(round(totalBrightness/NUM_PIXELS,0))
 
 @app.route('/blinkt/api/v1.0/<int:p>/all/brightness/<string:x>', methods=['GET'])
-def set_brightness(p,x):
+def set_brightness_all(p,x):
     global status
     for i in range(NUM_PIXELS):
         status[i][2] = int(x)
