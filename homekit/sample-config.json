@@ -11,7 +11,7 @@
     "accessories": [
         {
             "accessory": "HTTP-RGB",
-            "name": "Blinkt1",
+            "name": "Blinkt 1",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/0/status",
@@ -32,7 +32,7 @@
         },
         {
             "accessory": "HTTP-RGB",
-            "name": "Blinkt2",
+            "name": "Blinkt 2",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/1/status",
@@ -53,7 +53,7 @@
         },
         {
             "accessory": "HTTP-RGB",
-            "name": "Blinkt3",
+            "name": "Blinkt 3",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/2/status",
@@ -74,7 +74,7 @@
         },
         {
             "accessory": "HTTP-RGB",
-            "name": "Blinkt4",
+            "name": "Blinkt 4",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/3/status",
@@ -95,7 +95,7 @@
         },
         {
             "accessory": "HTTP-RGB",
-            "name": "Blinkt5",
+            "name": "Blinkt 5",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/4/status",
@@ -116,7 +116,7 @@
         },
         {
             "accessory": "HTTP-RGB",
-            "name": "Blinkt6",
+            "name": "Blinkt 6",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/5/status",
@@ -137,7 +137,7 @@
         },
         {
             "accessory": "HTTP-RGB",
-            "name": "Blinkt7",
+            "name": "Blinkt 7",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/6/status",
@@ -158,7 +158,7 @@
         },
         {
             "accessory": "HTTP-RGB",
-            "name": "Blinkt8",
+            "name": "Blinkt 8",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/7/status",
@@ -179,7 +179,7 @@
         },
         {
             "accessory": "HTTP-RGB",
-            "name": "AllBlinkt",
+            "name": "Blinkt all",
 
             "switch": {
                 "status": "http://127.0.0.1:5000/blinkt/api/v1.0/0/all/status",
