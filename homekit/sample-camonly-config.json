@@ -14,8 +14,8 @@
         "cameras": [{
           "name": "PiCam",
         	"videoConfig": {
-            "source": "-re -i http://127.0.0.1:8080/stream/video.mjpeg",
-            "stillImageSource": "-i http://127.0.0.1:8080/stream/snapshot.jpeg",
+            "source": "-re -i http://77.97.7.81:8080/stream/video.mjpeg",
+            "stillImageSource": "-i http://77.97.7.81:8080/stream/snapshot.jpeg",
           	"maxStreams": 2,
           	"maxWidth": 640,
           	"maxHeight": 480,
