@@ -10,6 +10,10 @@ To run everything, first we start the Python blinkt-homekit script:
 ```bash
 sudo python homekit.py
 ```
+Then start UV4L:
+```bash
+uv4l --auto-video_nr --driver raspicam --encoding mjpeg
+```
 Finally in another teminal just type:
 ```bash
 homebridge
