@@ -17,8 +17,8 @@
             "source": "-re -i http://127.0.0.1:8080/stream/video.mjpeg",
             "stillImageSource": "-i http://127.0.0.1:8080/stream/snapshot.jpeg",
           	"maxStreams": 2,
-          	"maxWidth": 320,
-          	"maxHeight": 240,
+          	"maxWidth": 640,
+          	"maxHeight": 480,
           	"maxFPS": 15
         	}
         }]
