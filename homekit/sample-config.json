@@ -202,17 +202,30 @@
     "platforms": [
       {
         "platform": "Camera-ffmpeg",
-        "cameras": [{
-          "name": "PiCam",
-        	"videoConfig": {
+        "cameras": [
+          {
+          "name": "PiCam Remote",
+          "videoConfig": {
             "source": "-re -i http://77.97.7.81:8080/stream/video.mjpeg",
             "stillImageSource": "-i http://77.97.7.81:8080/stream/snapshot.jpeg",
-          	"maxStreams": 4,
-          	"maxWidth": 640,
-          	"maxHeight": 480,
-          	"maxFPS": 15
-        	}
-        }]
+            "maxStreams": 4,
+            "maxWidth": 640,
+            "maxHeight": 360,
+            "maxFPS": 15
+            }
+          },
+          {
+          "name": "PiCam Local",
+          "videoConfig": {
+            "source": "-re -i http://192.168.0.18:8080/stream/video.mjpeg",
+            "stillImageSource": "-i http://192.168.0.18:8080/stream/snapshot.jpeg",
+            "maxStreams": 4,
+            "maxWidth": 640,
+            "maxHeight": 360,
+            "maxFPS": 15
+            }
+          }
+        ]
       }
     ]
 }
