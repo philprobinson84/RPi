@@ -1,27 +1,31 @@
 {
     "bridge": {
-        "name": "RasPi",
-        "username": "CC:22:3D:E3:CE:33",
+        "name": "RasPi_ModelB",
+        "username": "CC:22:3D:E3:CE:34",
         "port": 51826,
         "pin": "012-34-567"
     },
 
-    "description": "RaspberyyPi2 HomeBridge",
+    "description": "RaspberyyPi ModelB HomeBridge",
+
+    "accessories": [],
 
     "platforms": [
       {
         "platform": "Camera-ffmpeg",
-        "cameras": [{
-          "name": "PiCam",
-        	"videoConfig": {
-            "source": "-re -i http://77.97.7.81:8080/stream/video.mjpeg",
-            "stillImageSource": "-i http://77.97.7.81:8080/stream/snapshot.jpeg",
-          	"maxStreams": 2,
-          	"maxWidth": 640,
-          	"maxHeight": 480,
-          	"maxFPS": 15
-        	}
-        }]
+        "cameras": [
+          {
+          "name": "PiCam Local",
+          "videoConfig": {
+            "source": "-re -i http://192.168.0.6:8080/stream/video.mjpeg",
+            "stillImageSource": "-i http://192.168.0.6:8080/stream/snapshot.jpeg",
+            "maxStreams": 4,
+            "maxWidth": 640,
+            "maxHeight": 360,
+            "maxFPS": 15
+            }
+          }
+        ]
       }
     ]
 }

@@ -83,3 +83,84 @@ Then in another teminal just type:
 homebridge
 ```
 If you're running iOS 10 or above, you can now open the Home app and the device will be shown, allowing you to change colour, brightness and other goodness. Enjoy!
+
+#Camera-Only Full Setup
+##Installation
+1. Download the latest Raspbian Jessie image and write to an SD card.
+2. Boot your Pi (with camera connected).
+3. If you're using WiFi, setup the WiFi now using the GUI.
+4. Enable the camera, ssh and boot to cli, reboot when prompted.
+5. Record a quick test video:
+```bash
+raspivid -o test.h264
+```
+6. Clone the Git repo, homekit branch:
+```bash
+git clone https://github.com/philprobinson84/RPi.git -b homekit
+cd /home/pi/RPi/homekit
+sudo chmod u+x *.sh
+```
+7. Install ffmpeg (taken from here: https://www.npmjs.com/package/homebridge-camera-ffmpeg-omx):
+```bash
+cd /home/pi/Downloads
+sudo wget goo.gl/gMGA81 -O ffmpeg.deb
+sudo dpkg -i ffmpeg.deb
+```
+8. Install the latest version of Node.JS (doesn't work on model B as it's ARMv6, use 'linux-armv6l' tarballs direct from nodejs.org, see 8 for ModelB.):
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+8. Install the latest version of Node.JS (for model B):
+```bash
+cd /home/pi/Downloads
+wget https://nodejs.org/dist/v6.9.4/node-v6.9.4-linux-armv6l.tar.xz
+tar xf node-v6.9.4-linux-armv6l.tar.xz
+cd node-v6.9.4-linux-armv6l
+sudo cp -R * /usr/local/
+```
+Confirm the right version is now installed by running:
+```bash
+node -v
+```
+9. Install homebridge dependencies:
+```bash
+sudo apt-get install libavahi-compat-libdnssd-dev npm
+```
+10. Now, we can install homebridge itself, as well as the  homebridge-camera-ffmpeg-omx plugin:
+```bash
+sudo npm install -g --unsafe-perm homebridge
+sudo npm install -g --unsafe-perm homebridge-camera-ffmpeg-omx
+```
+11. Now to install uv4l and a couple of extras for this:
+(Based on this: http://www.linux-projects.org/uv4l/installation/)
+Add repo key and repo to apt:
+```bash
+ curl http://www.linux-projects.org/listing/uv4l_repo/lrkey.asc | sudo apt-key add -
+ sudo nano /etc/apt/sources.list
+ ```
+ Add the following line to the bottom of the file:
+ ```
+deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/ jessie main
+ ```
+ Hit `Ctrl+X` to exit - make sure to save changes!
+ Now update apt and install UV4L:
+ ```bash
+ sudo apt-get update
+ sudo apt-get install uv4l uv4l-raspicam
+ ```
+ Don't install uv4l-raspicam-extras unless you want the uv4l camera device to load automatically during boot (not recommended, better to enable when needed).
+
+ ##Configuration
+ Do the following any time you change the sample configuration files in this Git repo and wish to redeploy them.
+ ```bash
+ cd /home/pi/RPi/homekit
+./cleanandcopy-camonly.sh
+```
+##Running
+Finally, run the following script to launch UV4L and homebridge:
+```bash
+./run=camonly.sh
+```
