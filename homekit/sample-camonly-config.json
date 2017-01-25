@@ -8,8 +8,6 @@
 
     "description": "RaspberyyPi ModelB HomeBridge",
 
-    "accessories": [],
-
     "platforms": [
       {
         "platform": "Camera-ffmpeg",
